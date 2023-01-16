@@ -1,8 +1,15 @@
+import React from "react"
 import './App.css';
+import { Routes, Route } from 'react-router-dom'
+import { Dashboard } from "./pages/dashboard/Dashboard";
+import { Login } from "./pages/login/Login";
 
 function App() {
   return (
-    <div className="App">1</div>
+    <Routes>
+        <Route path="/" element={<Dashboard />}></Route>
+        <Route path="login" element={<Login />}></Route>
+    </Routes>
   );
 }
 
