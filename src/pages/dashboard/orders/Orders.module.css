@@ -1,0 +1,28 @@
+.order {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 20px 0 20px;
+    height: 37px;
+    background: #FFFFFF;
+    border: 1px solid #EBEBEB;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.numberOrder {
+    width: 23%;
+    text-align: center;
+}
+
+.emailOrder {
+    width: 25%;
+}
+
+.amountOrder {
+    width: 13%;
+}
+
+.dateOrder {
+    width: 13%;
+}

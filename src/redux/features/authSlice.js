@@ -4,9 +4,12 @@ import axios from '../../utils/axios'
 //создаём стартовый state
 const initialState = {
     user: null,
-    token: null,
+    orders: [],
+    token: Boolean(window.localStorage.token),
     isLoading: false,
+    isNext: true,
     status: null,
+    count: 5
 }
 
 //создаём Thunk для выполнения запроса на сервер для авторизации
@@ -42,9 +45,9 @@ export const getMe = createAsyncThunk(
     'auth/getMe',
     //второй параметр это асинх функция
     //и деалем запрос на сервер
-    async() => {
+    async(update) => {
         try {
-            const { data } = await axios.get('auth/me')
+            const { data } = await axios.post('auth/me', {data: update})
             //возвращаем data
             return data
         } catch (error) {
@@ -60,8 +63,12 @@ export const authSlice = createSlice({
         logout: (state) => {
             state.user = null
             state.token = null
+            state.orders = []
             state.isLoading = false
             state.status = null
+        },
+        showMore: (state) => {
+            state.count += 5
         }
     },
     extraReducers: {
@@ -87,9 +94,10 @@ export const authSlice = createSlice({
         },
         [getMe.fulfilled]: (state, action) => {
             state.isLoading = false
-            state.status = null
-            state.user = action.payload?.user
-            state.token = action.payload?.token
+            state.user = action.payload.user
+            state.token = action.payload.token
+            state.orders = action.payload.orders
+            state.isNext = action.payload.isNext
         },
         [getMe.rejected]: (state, action) => {
             state.status = action.payload.message
@@ -100,6 +108,6 @@ export const authSlice = createSlice({
 
 export const checkIsAuth = (state) => Boolean(state.auth.token)
 
-export const { logout } = authSlice.actions
+export const { logout, showMore } = authSlice.actions
 
 export default authSlice.reducer

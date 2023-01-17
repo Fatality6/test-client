@@ -3,6 +3,7 @@ import style from './Login.module.css'
 import { checkIsAuth, loginUser } from '../../redux/features/authSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 export const Login = () => {
     const [email, setEmail] = useState('')
@@ -13,7 +14,9 @@ export const Login = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        if (isAuth) navigate('/')
+        if (isAuth) {
+            navigate('/')
+            toast('Вы вошли в систему')}
     },[isAuth, navigate])
 
     const handleSubmit = () => {
