@@ -18,8 +18,8 @@ export const Dashboard = () => {
     }, [isAuth, navigate])
 
     useEffect(() => {
-        dispatch(getMe({count,select}))
-    }, [dispatch,count,select])
+        dispatch(getMe({ count, select }))
+    }, [dispatch, count, select])
 
     const logoutHandler = () => {
         dispatch(logout())
@@ -31,7 +31,7 @@ export const Dashboard = () => {
         dispatch(showMore())
     }
 
-    if(!user) return <div></div>
+    if (!user) return <div></div>
 
     return (
         <div className={style.container}>
@@ -57,7 +57,6 @@ export const Dashboard = () => {
                             <option value={3}>По дате</option>
                         </select>
                     </div>
-
                 </div>
                 <div className={style.headTable}>
                     <span className={style.number}>Номер заказа</span>
@@ -77,9 +76,7 @@ export const Dashboard = () => {
                 {isNext && <div className={style.more}>
                     <button onClick={ordersHandler}>Показать еще...</button>
                 </div>}
-
             </main>
-
         </div>
     )
 }

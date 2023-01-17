@@ -183,12 +183,13 @@ button:hover {
 }
 
 @media (max-width: 799px) and (min-width: 300px) {
-    .container{
+    .container {
         width: 100%;
     }
 }
+
 @media (min-width: 1279px) {
-    .container{
+    .container {
         width: 50%;
     }
 }

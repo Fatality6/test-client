@@ -19,15 +19,15 @@ export const loginUser = createAsyncThunk(
     'auth/loginUser',
     //второй параметр это асинх функция, которая получает объект с данными пользователя при помощи useDispatch 
     //и деалет запрос на сервер
-    async({ email, password }) => {
+    async ({ email, password }) => {
         try {
-            const { data } = await axios.post('auth/login',{
+            const { data } = await axios.post('auth/login', {
                 email,
                 password
             })
 
             //если в ответе есть токен, то записываем его в localStorage
-            if(data.token) {
+            if (data.token) {
                 window.localStorage.setItem('token', data.token)
             }
             //возвращаем data
@@ -45,9 +45,9 @@ export const getMe = createAsyncThunk(
     'auth/getMe',
     //второй параметр это асинх функция
     //и деалем запрос на сервер
-    async(update) => {
+    async (update) => {
         try {
-            const { data } = await axios.post('auth/me', {data: update})
+            const { data } = await axios.post('auth/me', { data: update })
             //возвращаем data
             return data
         } catch (error) {
