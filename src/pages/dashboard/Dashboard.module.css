@@ -1,6 +1,5 @@
 .container {
     margin: 10px auto 10px auto;
-    width: 50%;
     font-family: 'Inter', sans-serif;
 }
 
@@ -77,6 +76,7 @@
 .title {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
 }
@@ -122,19 +122,19 @@
 
 .number {
     text-align: center;
-    width: 23%;
-}
-
-.emailTable {
     width: 25%;
 }
 
+.emailTable {
+    width: 35%;
+}
+
 .amount {
-    width: 13%;
+    width: 15%;
 }
 
 .date {
-    width: 13%;
+    width: 25%;
 }
 
 .more {
@@ -173,10 +173,22 @@
 
 select:hover {
     background: #c2c2c2;
+    border: none;
     transition: 0.5s;
 }
 
 button:hover {
     background: #c2c2c2;
     transition: 0.5s;
+}
+
+@media (max-width: 799px) and (min-width: 300px) {
+    .container{
+        width: 100%;
+    }
+}
+@media (min-width: 1279px) {
+    .container{
+        width: 50%;
+    }
 }

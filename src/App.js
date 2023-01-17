@@ -13,7 +13,7 @@ function App() {
         <Route path="/" element={<Dashboard />}></Route>
         <Route path="login" element={<Login />}></Route>
     </Routes>
-    <ToastContainer position="bottom-right" hideProgressBar />
+    <ToastContainer position="bottom-center" hideProgressBar />
     </>
   );
 }

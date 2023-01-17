@@ -6,7 +6,6 @@
 
 .loginBox {
     margin-top: 2%;
-    width: 30%;
     padding: 20px;
     background-color: #ffffff;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -30,14 +29,13 @@
     box-sizing: border-box;
     font-weight: 700;
     font-size: 24px;
-    padding: 10px
+    padding: 22px
 
 }
 
 .input::-webkit-input-placeholder {
     font-weight: 700;
     font-size: 24px;
-    padding-left: 22px;
     color: #C1C0C0;}
 
 .btn {
@@ -55,9 +53,32 @@
     transition: 0.5s;
 }
 
+.btn:hover {
+    background: #A2A3A7;
+    color: #86CD89;
+}
+
 .text {
     font-family: 'Inter', sans-serif;
     color: #A2A3A7;
     font-weight: 500;
     font-size: 20px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.text:hover {
+    color:#000000;
+    transition: 0.5s;
+}
+
+@media (max-width: 650px) and (min-width: 300px) {
+    .loginBox{
+        width: 100%;
+    }
+}
+@media (min-width: 1279px) {
+    .loginBox{
+        width: 30%;
+    }
 }

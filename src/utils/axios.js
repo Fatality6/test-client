@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-    baseURL: 'http://localhost:8080/api'
+    baseURL: 'https://testwork-server.onrender.com/api'
 })
 
 //с каждым запросом на сервер из localStorage отправляется токен

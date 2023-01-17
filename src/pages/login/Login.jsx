@@ -9,15 +9,19 @@ export const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
+    const { status } = useSelector((state) => state.auth)
+
     const dispatch = useDispatch()
     const isAuth = useSelector(checkIsAuth)
     const navigate = useNavigate()
 
     useEffect(() => {
-        if (isAuth) {
-            navigate('/')
-            toast('Вы вошли в систему')}
-    },[isAuth, navigate])
+        if (isAuth) navigate('/')
+    }, [isAuth, navigate])
+
+    useEffect(() => {
+        toast(status)
+    }, [status])
 
     const handleSubmit = () => {
         try {
@@ -50,7 +54,9 @@ export const Login = () => {
                         onClick={handleSubmit}
                     >ВОЙТИ
                     </button>
-                    <span className={style.text}>Забыли пароль?</span>
+                    <span className={style.text} onClick={() => toast('Вам нужно тренировать память :)')}>
+                        Забыли пароль?
+                    </span>
                 </form>
             </div>
         </div>
