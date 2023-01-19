@@ -23,7 +23,8 @@ export const Login = () => {
         toast(status)
     }, [status])
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
         try {
             dispatch(loginUser({ email, password }))
         } catch (error) {
@@ -34,7 +35,7 @@ export const Login = () => {
     return (
         <div className={style.wrapper}>
             <div className={style.loginBox}>
-                <form className={style.form} onSubmit={e => e.preventDefault()}>
+            <form className={style.form} onSubmit={handleSubmit}>
                     <input
                         type="text"
                         placeholder="Email"
@@ -49,11 +50,7 @@ export const Login = () => {
                         onChange={(e) => setPassword(e.target.value)}
                         className={style.input}
                     />
-                    <button
-                        className={style.btn}
-                        onClick={handleSubmit}
-                    >ВОЙТИ
-                    </button>
+                    <button className={style.btn}>ВОЙТИ</button>
                     <span className={style.text} onClick={() => toast('Вам нужно тренировать память :)')}>
                         Забыли пароль?
                     </span>

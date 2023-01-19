@@ -6,7 +6,6 @@ const initialState = {
     user: null,
     orders: [],
     token: Boolean(window.localStorage.token),
-    isLoading: false,
     isNext: true,
     status: null,
     count: 5
@@ -18,7 +17,7 @@ export const loginUser = createAsyncThunk(
     //адрес должен быть уникальным для каждого Thunk
     'auth/loginUser',
     //второй параметр это асинх функция, которая получает объект с данными пользователя при помощи useDispatch 
-    //и деалет запрос на сервер
+    //и делает запрос на сервер
     async ({ email, password }) => {
         try {
             const { data } = await axios.post('auth/login', {
@@ -64,7 +63,6 @@ export const authSlice = createSlice({
             state.user = null
             state.token = null
             state.orders = []
-            state.isLoading = false
             state.status = null
         },
         showMore: (state) => {
@@ -74,26 +72,21 @@ export const authSlice = createSlice({
     extraReducers: {
         //login user
         [loginUser.pending]: (state) => {
-            state.isLoading = true
             state.status = null
         },
         [loginUser.fulfilled]: (state, action) => {
-            state.isLoading = false
             state.status = action.payload.message
             state.user = action.payload.user
             state.token = action.payload.token
         },
         [loginUser.rejected]: (state, action) => {
             state.status = action.payload.message
-            state.isLoading = false
         },
         //get me
         [getMe.pending]: (state) => {
-            state.isLoading = true
             state.status = null
         },
         [getMe.fulfilled]: (state, action) => {
-            state.isLoading = false
             state.user = action.payload.user
             state.token = action.payload.token
             state.orders = action.payload.orders
@@ -101,7 +94,6 @@ export const authSlice = createSlice({
         },
         [getMe.rejected]: (state, action) => {
             state.status = action.payload.message
-            state.isLoading = false
         }
     }
 })
